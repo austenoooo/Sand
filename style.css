@@ -1,0 +1,34 @@
+body{
+    background-color: rgb(64, 41, 0);
+}
+
+
+#canva{
+    position: absolute;
+    top: calc(50vh - 200px);
+    left: calc(50vw - 200px);
+    height: 400px;
+    width: 400px;
+    z-index: 99;
+}
+
+#cloud{
+    position: absolute;
+    top: calc(50vh - 200px);
+    left: calc(50vw - 200px);
+    height: 400px;
+    width: 400px;
+    z-index: -1;
+    background-color: rgb(78, 173, 231);
+}
+
+
+.clouds{
+    position: absolute;
+    z-index: 2;
+}
+
+#cloud1{
+    width: 121px;
+    height: auto;
+}
