@@ -48,6 +48,10 @@ function draw() {
                 newSand.color = color(222, 193, 140);
             }
         }
+
+        sandHeight = sandHeight + 0.1;
+        
+        updateCloudsPos();
     }
 
 }
@@ -81,7 +85,7 @@ class SandPile {
                 sandParticle.height = 5;
                 sandParticle.x = xPos;
                 sandParticle.y = yPos;
-                sandParticle.collider = 'none'
+                sandParticle.collider = 'static'
                 // rect(xPos, yPos, 5, 5);
             }
             maxLength = maxLength - 2 * 5;

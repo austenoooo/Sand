@@ -9,7 +9,7 @@ body{
     left: calc(50vw - 200px);
     height: 400px;
     width: 400px;
-    z-index: 99;
+    z-index: 100;
 }
 
 #cloud{
@@ -20,15 +20,45 @@ body{
     width: 400px;
     z-index: -1;
     background-color: rgb(78, 173, 231);
+    overflow: hidden;
+}
+
+#cloud-group{
+    position: absolute;
+    top: 0;
 }
 
 
 .clouds{
     position: absolute;
-    z-index: 2;
+    z-index: -1;
 }
 
 #cloud1{
     width: 121px;
     height: auto;
+    top: 50px;
+    left: 100px
 }
+
+#cloud2{
+    width: 75px;
+    height: auto;
+    top: 150px;
+    left: 270px
+}
+
+#cloud3{
+    width: 91px;
+    height: auto;
+    top: 160px;
+    left: 10px
+}
+
+#cloud4{
+    width: 132px;
+    height: auto;
+    top: 20px;
+    left: 250px
+}
+
