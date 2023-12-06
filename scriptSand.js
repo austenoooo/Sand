@@ -9,7 +9,7 @@ function setup() {
     var myCanvas = new Canvas(400, 400);
     myCanvas.parent("canva");
     background(0, 0, 0, 0);
-    world.gravity.y =10;
+    world.gravity.y = 10;
 
     noStroke();
 
@@ -85,7 +85,8 @@ class SandPile {
                 sandParticle.height = 5;
                 sandParticle.x = xPos;
                 sandParticle.y = yPos;
-                sandParticle.collider = 'static'
+                // sandParticle.collider = 'static';
+                sandParticle.collider = 'none';
                 // rect(xPos, yPos, 5, 5);
             }
             maxLength = maxLength - 2 * 5;
