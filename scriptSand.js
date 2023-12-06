@@ -49,8 +49,13 @@ function draw() {
             }
         }
 
-        sandHeight = sandHeight + 0.1;
+        sandHeight = sandHeight + 1;
         
+        updateCloudsPos();
+    }
+    else{
+        sandHeight = sandHeight - 0.1;
+
         updateCloudsPos();
     }
 
