@@ -2,14 +2,17 @@
 let sand, ground;
 let sandPile;
 
+// default sand pile height
+let sandHeight = 0; 
+let sandThreshold = 200;
 
-let maxLength = 400
+let prevSandPileHeight = 0;
 
 function setup() {
-    var myCanvas = new Canvas(400, 400);
-    myCanvas.parent("canva");
+    var cnv = new Canvas(400, 400);
+    // cnv.parent("canva");
     background(0, 0, 0, 0);
-    world.gravity.y = 10;
+    world.gravity.y = 20;
 
     noStroke();
 
@@ -27,14 +30,26 @@ function setup() {
     // ground.h = 1;
     // ground.collider = 'static';
 
-    sandPile = new SandPile(180);
-    sandPile.display();
+    sandPile = new SandPile();
+    sandPile.generate();
 }
 
 function draw() {
     clear();
 
     background(0, 0, 0, 0);
+
+    if (sandHeight <= sandThreshold) {
+        let sandPileHeight = sandHeight * 1;
+        if (sandPileHeight != prevSandPileHeight){
+            // sandPile.remove();
+            sandPile.updateHeight(sandHeight * 1);
+            sandPile.display();
+        }
+
+        prevSandPileHeight = sandPileHeight;
+        
+    }
     
 
     if (mouse.pressing()) {
@@ -49,15 +64,23 @@ function draw() {
             }
         }
 
-        sandHeight = sandHeight + 1;
+        sandHeight = sandHeight + 0.2;
+
         
-        updateCloudsPos();
     }
     else{
-        sandHeight = sandHeight - 0.1;
 
+        // the wind
+        if (sandHeight > 0){
+            sandHeight = sandHeight - 0.1;
+        }  
+    }
+
+    if (sandHeight > sandThreshold){
         updateCloudsPos();
     }
+
+    heightText.innerHTML = "HEIGHT: " + Math.round(sandHeight);
 
 }
 
@@ -65,10 +88,49 @@ class SandPile {
     constructor(height) {
         // the given height must be the multiply of 5
         this.height = height;
+        this.sandParticles = [];
+        this.maxHeight = 200;
     }
 
-    display() {
+
+    display(){
+        let count = 0;
+        let maxLength = 400;
+
+        // display the sand that exsit
         for (let i = 0; i < this.height / 5; i++){
+            for (let j = 0; j < maxLength / 5; j++){
+                let xPos = j * 5 + (400 - maxLength) / 2;
+                let yPos = 400 - i * 5;
+
+                var currentParticle = this.sandParticles[count];
+                currentParticle.visible = true;
+                count += 1;
+            }
+            maxLength = maxLength - 2 * 5;
+        }
+
+        // remove the rest
+        for (let i = 0; i < this.sandParticles.length - count; i++ ){
+            var currentParticle = this.sandParticles[count + i];
+            currentParticle.visible = false;
+        }
+    
+    }
+
+    updateHeight(newHeight){
+        this.height = newHeight;
+    }
+
+    remove() {
+        for (let i = 0; i < this.sandParticles.length; i++){
+            this.sandParticles[i].remove();
+        }
+    }
+
+    generate() {
+        let maxLength = 400;
+        for (let i = 0; i < this.maxHeight / 5; i++){
             for (let j = 0; j < maxLength / 5; j++){
                 let xPos = j * 5 + (400 - maxLength) / 2;
                 let yPos = 400 - i * 5;
@@ -90,9 +152,12 @@ class SandPile {
                 sandParticle.height = 5;
                 sandParticle.x = xPos;
                 sandParticle.y = yPos;
+                sandParticle.visible = false;
                 // sandParticle.collider = 'static';
                 sandParticle.collider = 'none';
-                // rect(xPos, yPos, 5, 5);
+
+
+                this.sandParticles.push(sandParticle);
             }
             maxLength = maxLength - 2 * 5;
         }

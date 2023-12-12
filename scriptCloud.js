@@ -1,4 +1,4 @@
-let sandHeight = 500;
+
 
 let cloudGroup = document.getElementById("cloud-group");
 
@@ -53,9 +53,9 @@ function createClouds() {
 
 function updateCloudsPos() {
 
-    cloudGroup.style.top = sandHeight + "px";
+    cloudGroup.style.top = sandHeight - sandThreshold + "px";
 
-    heightText.innerHTML = "HEIGHT: " + Math.round(sandHeight);
+    
 }
 
 function updateSkyColor() {

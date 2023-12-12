@@ -4,6 +4,13 @@ body {
   font-family: "VT323", monospace;
   margin: 0;
   padding: 0;
+  display: flex;
+  /* This centers our sketch horizontally. */
+  justify-content: center;
+  /* This centers our sketch vertically. */
+  align-items: center;
+
+  height: 100vh;
 }
 
 html {
@@ -41,7 +48,7 @@ html {
 
 #cloud {
   position: absolute;
-  top: calc(50vh - 200px);
+  top: calc(50vh - 200px - 2px);
   left: calc(50vw - 200px);
   height: 400px;
   width: 400px;
