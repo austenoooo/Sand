@@ -8,6 +8,8 @@ let sandThreshold = 200;
 
 let prevSandPileHeight = 0;
 
+let windAni;
+
 function setup() {
     var cnv = new Canvas(400, 400);
     // cnv.parent("canva");
@@ -32,6 +34,8 @@ function setup() {
 
     sandPile = new SandPile();
     sandPile.generate();
+
+    windAni = loadAni("img/wind1.png", 16);
 }
 
 function draw() {
@@ -86,6 +90,13 @@ function draw() {
     }
 
     heightText.innerHTML = "HEIGHT: " + Math.round(sandHeight);
+
+
+    // display wind
+    if (sandHeight > 15){
+        animation(windAni, 80, 130);
+        animation(windAni, 300, 100);
+    }
 
 }
 
