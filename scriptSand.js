@@ -63,21 +63,26 @@ function draw() {
                 newSand.color = color(222, 193, 140);
             }
         }
-
-        sandHeight = sandHeight + 0.2;
-
-        
+        sandHeight = sandHeight + 0.6;
     }
     else{
-
         // the wind
-        if (sandHeight > 0){
+        if (sandHeight > 15){
             sandHeight = sandHeight - 0.1;
         }  
     }
 
     if (sandHeight > sandThreshold){
         updateCloudsPos();
+    }
+
+    if (sandHeight > 200) {
+        prizeImg.style.opacity = 1;
+        prizeGenerated = true;
+    }
+
+    if (prizeGenerated && sandHeight < 15){
+        prizeImg.src = "img/prize2.png";
     }
 
     heightText.innerHTML = "HEIGHT: " + Math.round(sandHeight);
