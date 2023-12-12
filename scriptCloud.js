@@ -58,5 +58,10 @@ function updateCloudsPos() {
     heightText.innerHTML = "HEIGHT: " + Math.round(sandHeight);
 }
 
+function updateSkyColor() {
+
+    
+}
+
 
 createClouds();

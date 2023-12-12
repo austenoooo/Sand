@@ -1,51 +1,61 @@
-body{
-    background-color: rgb(64, 41, 0);
-    color: rgb(255, 235, 138);
-    font-family: "VT323", monospace;
-    margin: 0;
-    padding: 0;
+body {
+  background-color: rgb(64, 41, 0);
+  color: rgb(255, 235, 138);
+  font-family: "VT323", monospace;
+  margin: 0;
+  padding: 0;
 }
 
-
-#height{
-    position: absolute;
-    top: calc(50vh - 250px);
-    left: calc(50vw + 125px);
+html {
+  cursor: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" height="32" width="32"><text y="32" font-size="28">🪣</text><path d="M0,2 L0,0 L2,0" fill="red" /></svg>'),
+    auto;
 }
 
-#chatbot{
-    position: absolute;
-    top: calc(50vh - 250px);
-    left: calc(50vw - 200px);
+#height {
+  position: absolute;
+  top: calc(50vh - 250px);
+  left: calc(50vw + 125px);
 }
 
-#canva{
-    position: absolute;
-    top: calc(50vh - 200px);
-    left: calc(50vw - 200px);
-    height: 400px;
-    width: 400px;
-    z-index: 100;
+#chatbot {
+  position: absolute;
+  top: calc(50vh - 250px);
+  left: calc(50vw - 200px);
 }
 
-#cloud{
-    position: absolute;
-    top: calc(50vh - 200px);
-    left: calc(50vw - 200px);
-    height: 400px;
-    width: 400px;
-    z-index: -1;
-    background-color: rgb(78, 173, 231);
-    overflow: hidden;
+#instruction {
+  position: absolute;
+  top: calc(50vh + 210px);
+  left: calc(50vw - 200px);
+  width: 400px;
 }
 
-#cloud-group{
-    position: absolute;
-    top: 0;
+#canva {
+  position: absolute;
+  top: calc(50vh - 200px);
+  left: calc(50vw - 200px);
+  height: 400px;
+  width: 400px;
+  z-index: 100;
 }
 
+#cloud {
+  position: absolute;
+  top: calc(50vh - 200px);
+  left: calc(50vw - 200px);
+  height: 400px;
+  width: 400px;
+  z-index: -1;
+  background-color: rgb(78, 173, 231);
+  overflow: hidden;
+}
 
-.clouds{
-    position: absolute;
-    z-index: -1;
+#cloud-group {
+  position: absolute;
+  top: 0;
+}
+
+.clouds {
+  position: absolute;
+  z-index: -1;
 }
