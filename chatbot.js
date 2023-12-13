@@ -6,10 +6,10 @@ async function getGeneration(positive) {
   let prompt;
   if (positive)
     prompt =
-      "Give me a sentence that is less than 8 words to compliment someone's hardwork. Only respond with the sentence. Make sure it's not longer than 20 characters. NO other text.";
+      "Give me a sentence that is less than 8 words to compliment someone's hardwork. Only respond with the sentence. Make sure it's not longer than 60 characters. NO other text.";
   else
     prompt =
-      "Give me a sentence that is less than 8 words that push someone to work harder. Make sure it's not longer than 20 characters. Only respond with the sentence. NO other text.";
+      "Give me a sentence that is less than 8 words that push someone to work harder. Make sure it's not longer than 60 characters. Only respond with the sentence. NO other text.";
 
   let data = {
     version: "8e6975e5ed6174911a6ff3d60540dfd4844201974602551e10e9e87ab143d81e",
