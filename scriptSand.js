@@ -54,7 +54,7 @@ function draw() {
     
 
     if (mouse.pressing()) {
-        for (let i = 0; i < 2; i++){
+        for (let i = 0; i < 5; i++){
             let newSand = new sand.Sprite(mouse.x, mouse.y);
             newSand.layer = 1;
             let random = Math.random();
