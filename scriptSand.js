@@ -3,12 +3,14 @@ let sand, ground;
 let sandPile;
 
 // default sand pile height
-let sandHeight = 0; 
+let sandHeight = 10; 
 let sandThreshold = 200;
 
 let prevSandPileHeight = 0;
 
 let windAni;
+
+let gameEnd = document.getElementById("game-end");
 
 function setup() {
     var cnv = new Canvas(400, 400);
@@ -19,29 +21,24 @@ function setup() {
     noStroke();
 
     sand = new Group();
-    // sand.color = color(222, 193, 140);
-    // sand.stroke = color(0, 0, 0, 0);
     sand.mass = 3;
     sand.vel.y = 0;
     sand.height = 5;
     sand.width = 5;
 
-    // ground = new Sprite();
-    // ground.y = 400;
-    // ground.w = 400;
-    // ground.h = 1;
-    // ground.collider = 'static';
-
     sandPile = new SandPile();
     sandPile.generate();
 
     windAni = loadAni("img/wind1.png", 16);
+    windAni.frameDelay = 8;
 }
 
 function draw() {
     clear();
 
     background(0, 0, 0, 0);
+
+    updateSkyColor();
 
     if (sandHeight <= sandThreshold) {
         let sandPileHeight = sandHeight * 1;
@@ -59,6 +56,7 @@ function draw() {
     if (mouse.pressing()) {
         for (let i = 0; i < 2; i++){
             let newSand = new sand.Sprite(mouse.x, mouse.y);
+            newSand.layer = 1;
             let random = Math.random();
             if (random > 0.9) {
                 newSand.color = color(196, 155, 81);
@@ -67,12 +65,12 @@ function draw() {
                 newSand.color = color(222, 193, 140);
             }
         }
-        sandHeight = sandHeight + 0.6;
+        sandHeight = sandHeight + 2;
     }
     else{
         // the wind
         if (sandHeight > 15){
-            sandHeight = sandHeight - 0.1;
+            sandHeight = sandHeight - 0.3;
         }  
     }
 
@@ -85,8 +83,10 @@ function draw() {
         prizeGenerated = true;
     }
 
-    if (prizeGenerated && sandHeight < 15){
+    // when player win
+    if (prizeGenerated && sandHeight <= 15){
         prizeImg.src = "img/prize2.png";
+        gameEnd.style.opacity = 1;
     }
 
     heightText.innerHTML = "HEIGHT: " + Math.round(sandHeight);
@@ -97,7 +97,6 @@ function draw() {
         animation(windAni, 80, 130);
         animation(windAni, 300, 100);
     }
-
 }
 
 class SandPile {
@@ -116,8 +115,6 @@ class SandPile {
         // display the sand that exsit
         for (let i = 0; i < this.height / 5; i++){
             for (let j = 0; j < maxLength / 5; j++){
-                let xPos = j * 5 + (400 - maxLength) / 2;
-                let yPos = 400 - i * 5;
 
                 var currentParticle = this.sandParticles[count];
                 currentParticle.visible = true;
@@ -171,6 +168,7 @@ class SandPile {
                 sandParticle.visible = false;
                 // sandParticle.collider = 'static';
                 sandParticle.collider = 'none';
+                sandParticle.layer = 2;
 
 
                 this.sandParticles.push(sandParticle);

@@ -1,7 +1,7 @@
 
 
 let cloudGroup = document.getElementById("cloud-group");
-
+let cloud = document.getElementById("cloud");
 let heightText = document.getElementById("height");
 
 
@@ -59,7 +59,12 @@ function updateCloudsPos() {
 }
 
 function updateSkyColor() {
-
+    if (sandHeight > 500){
+        let r = round(78 - 58 / 2000 * (sandHeight - 500));
+        let g = round(172 - 150 / 2000 * (sandHeight - 500));
+        let b = round(231 - 200 / 2000 * (sandHeight - 500));
+        cloud.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+    }
     
 }
 

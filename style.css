@@ -53,7 +53,7 @@ html {
   height: 400px;
   width: 400px;
   z-index: -1;
-  background-color: rgb(78, 173, 231);
+  background-color: rgb(78, 172, 231);
   overflow: hidden;
 }
 
@@ -65,4 +65,12 @@ html {
 .clouds {
   position: absolute;
   z-index: -1;
+}
+
+
+#game-end{
+  position: absolute;
+  font-size: 3rem;
+  color: rgb(255, 255, 0);
+  opacity: 0;
 }
